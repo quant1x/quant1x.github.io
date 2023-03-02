@@ -78,6 +78,11 @@ if [ -d ${type} ]; then
   rm -rf ./${type}
 fi
 sed "s/\${quant_version}/${quantVersion}/g" index.tpl| sed "s/\${data_version}/${dataVersion}/g" > index.html
+git add .
+git commit -m "更新版本 ${quantVersion}"
+git push
+git tag -a v${quantVersion} -m "Release version ${quantVersion}"
+git push --tags
 cd $p0
 
 

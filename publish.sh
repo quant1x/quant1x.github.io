@@ -99,7 +99,7 @@ fi
 sed "s/\${quant_version}/${quantVersion}/g" index.tpl| sed "s/\${data_version}/${dataVersion}/g" > index.html
 git add .
 git commit -m "更新版本 ${quantVersion}"
-version=`git describe`
+version=$(git describe --tags `git rev-list --tags --max-count=1`)
 version=${version:1}
 echo "version: $version"
 echo "quantVersion: $quantVersion"

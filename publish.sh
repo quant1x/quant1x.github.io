@@ -101,13 +101,13 @@ git add .
 git commit -m "更新版本 ${quantVersion}"
 version=`git describe`
 version=${version:1}
-if [[ "$version" == "$quantVersion" ]]; then
+if [ "$version" == "$quantVersion" ]; then
   echo "版本相同, 先删除"
   git tag --delete v${quantVersion}
 fi
 git tag -a v${quantVersion} -m "Release version ${quantVersion}"
 git push
-if [[ "$version" == "$quantVersion" ]]; then
+if [ "$version" == "$quantVersion" ]; then
   echo "版本相同, 先删除"
   git push origin :v${quantVersion}
 fi

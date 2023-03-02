@@ -22,11 +22,11 @@ dataVersion="0.0.1"
 git clone --depth 1 https://gitee.com/quant1x/data.git
 if [ -d ${type} ]; then
   cd ${type}
-  mkdir bin
   version=`git describe`
   version=${version:1}
   dataVersion=${version}
   echo "${type} version=${version}"
+  mkdir bin
   for (( i = 0 ; i < ${#platform[@]} ; i++ ))
   do
     echo "正在编译${platform[$i]}的${arch[$i]}应用..."
@@ -42,6 +42,20 @@ if [ -d ${type} ]; then
     zip ../dl/${type}-$version.${OS[$i]}-${arch[$i]}.zip bin/*
     rm bin/*
   done
+  for (( i = 0 ; i < ${#platform[@]} ; i++ ))
+    do
+      echo "正在编译${platform[$i]}的${arch[$i]}的其它应用..."
+      apps=("zxg" "tick")
+      for app in ${apps[@]}
+      do
+        echo "正在编译${platform[$i]}的${arch[$i]}应用...$app..."
+        env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -o bin/${app}${ext[$i]} gitee.com/quant1x/data/update/${app}
+        echo "正在编译${platform[$i]}的${arch[$i]}应用...$app...OK"
+      done
+      echo "正在编译${platform[$i]}的${arch[$i]}应用...OK"
+      zip ../dl/other-$version.${OS[$i]}-${arch[$i]}.zip bin/*
+      rm bin/*
+    done
   cd ..
   rm -rf ./${type}
 fi

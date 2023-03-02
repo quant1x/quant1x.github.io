@@ -101,6 +101,8 @@ git add .
 git commit -m "更新版本 ${quantVersion}"
 version=`git describe`
 version=${version:1}
+echo "version: $version"
+echo "quantVersion: $quantVersion"
 if [ "$version" == "$quantVersion" ]; then
   echo "版本相同, 先删除"
   git tag --delete v${quantVersion}

@@ -30,7 +30,8 @@ if [ -d ${type} ]; then
   for (( i = 0 ; i < ${#platform[@]} ; i++ ))
   do
     echo "正在编译${platform[$i]}的${arch[$i]}应用..."
-    apps=("kline" "realtime" "zxg" "xdxr" "tick")
+    #apps=("kline" "realtime" "zxg" "xdxr" "tick")
+    apps=("kline" "realtime" "xdxr")
     for app in ${apps[@]}
     do
       echo "正在编译${platform[$i]}的${arch[$i]}应用...$app..."

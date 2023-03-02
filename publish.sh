@@ -29,6 +29,7 @@ if [ -d ${type} ]; then
   mkdir bin
   for (( i = 0 ; i < ${#platform[@]} ; i++ ))
   do
+    rm -f bin/*
     echo "正在编译${platform[$i]}的${arch[$i]}应用..."
     #apps=("kline" "realtime" "zxg" "xdxr" "tick")
     apps=("kline" "realtime" "xdxr")
@@ -44,6 +45,7 @@ if [ -d ${type} ]; then
   done
   for (( i = 0 ; i < ${#platform[@]} ; i++ ))
     do
+      rm -f bin/*
       echo "正在编译${platform[$i]}的${arch[$i]}的其它应用..."
       apps=("zxg" "tick")
       for app in ${apps[@]}
@@ -77,6 +79,7 @@ if [ -d ${type} ]; then
   echo "${type} version=${version}"
   for (( i = 0 ; i < ${#platform[@]} ; i++ ))
   do
+    rm -f bin/*
     echo "正在编译${platform[$i]}的${arch[$i]}应用..."
     apps=("strategy")
     for app in ${apps[@]}

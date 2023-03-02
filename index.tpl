@@ -39,14 +39,10 @@
     })(window, document, 'script', 'dataLayer', 'GTM-W8MVQXG');</script>
 
     <script src="/js/site.js"></script>
-    <meta name="og:url" content="https://go.dev/dl/">
-    <meta name="og:title" content="All releases - The Go Programming Language">
-    <title>All releases - The Go Programming Language</title>
-
+    <meta name="og:url" content="https://quant1x.github.io/">
+    <meta name="og:title" content="All releases - Quant1X">
+    <title>All releases - Quant1X</title>
     <meta name="og:image" content="https://go.dev/doc/gopher/gopher5logo.jpg">
-    <meta name="twitter:image" content="https://go.dev/doc/gopher/gopherbelly300.jpg">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@golang">
 </head>
 <body class="Site">
 

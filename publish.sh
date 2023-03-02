@@ -81,11 +81,12 @@ if [ -d ${type} ]; then
   do
     rm -f bin/*
     echo "正在编译${platform[$i]}的${arch[$i]}应用..."
-    apps=("strategy")
-    for app in ${apps[@]}
+    meths=("strategy")
+    apps=("quant")
+    for (( i = 0 ; i < ${#meths[@]} ; i++ ))
     do
       echo "正在编译${platform[$i]}的${arch[$i]}应用...$app..."
-      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -o bin/${app}${ext[$i]} github.com/quant1x/quant/${app}
+      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -o bin/${apps[$i]}${ext[$i]} github.com/quant1x/quant/${meths[$i]}
       echo "正在编译${platform[$i]}的${arch[$i]}应用...$app...OK"
     done
     echo "正在编译${platform[$i]}的${arch[$i]}应用...OK"

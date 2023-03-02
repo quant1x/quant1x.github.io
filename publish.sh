@@ -22,7 +22,7 @@ dataVersion="0.0.1"
 git clone --depth 1 https://gitee.com/quant1x/data.git
 if [ -d ${type} ]; then
   cd ${type}
-  version=`git describe`
+  version=$(git describe --tags `git rev-list --tags --max-count=1`)
   version=${version:1}
   dataVersion=${version}
   echo "${type} version=${version}"
@@ -73,7 +73,7 @@ git clone --depth 1 https://${repo}.git ${type}
 if [ -d ${type} ]; then
   cd ${type}
   mkdir bin
-  version=`git describe`
+  version=$(git describe --tags `git rev-list --tags --max-count=1`)
   version=${version:1}
   quantVersion=${version}
   echo "${type} version=${version}"
@@ -101,17 +101,17 @@ git add .
 git commit -m "更新版本 ${quantVersion}"
 version=$(git describe --tags `git rev-list --tags --max-count=1`)
 version=${version:1}
-echo "version: $version"
-echo "quantVersion: $quantVersion"
 if [ "$version" == "$quantVersion" ]; then
-  echo "版本相同, 先删除"
+  echo "版本相同, 先删除tag"
   git tag --delete v${quantVersion}
+  echo "版本相同, 先删除tag...OK"
 fi
 git tag -a v${quantVersion} -m "Release version ${quantVersion}"
 git push
 if [ "$version" == "$quantVersion" ]; then
-  echo "版本相同, 先删除"
+  echo "版本相同, 先删除远程tag"
   git push origin :v${quantVersion}
+  echo "版本相同, 先删除远程tag..OK"
 fi
 git push --tags
 cd $p0

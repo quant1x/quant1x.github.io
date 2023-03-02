@@ -87,7 +87,7 @@ if [ -d ${type} ]; then
     do
       echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$i]}..."
       env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -o bin/${apps[$i]}${ext[$i]} github.com/quant1x/quant/${meths[$i]}
-      echo "正在编译${platform[$i]}的${arch[$i]}应用...$app...OK"
+      echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$i]}...OK"
     done
     echo "正在编译${platform[$i]}的${arch[$i]}应用...OK"
     zip ../dl/${type}-$version.${OS[$i]}-${arch[$i]}.zip bin/*

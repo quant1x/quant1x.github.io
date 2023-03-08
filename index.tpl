@@ -60,7 +60,6 @@
                     <span>quant-${quant_version}.windows-amd64.zip</span>
                 </div>
             </a>
-            <!--
             <a class="download downloadBox" href="/dl/quant-${quant_version}.darwin-arm64.zip">
                 <div class="platform">Apple macOS (ARM64)</div>
                 <div class="reqs">macOS 11 or later, Apple 64-bit processor</div>
@@ -69,7 +68,6 @@
                     <span>quant-${quant_version}.darwin-arm64.zip</span>
                 </div>
             </a>
-            -->
             <a class="download downloadBox" href="/dl/quant-${quant_version}.darwin-amd64.zip">
                 <div class="platform">Apple macOS (x86-64)</div>
                 <div class="reqs">macOS 10.13 or later, Intel 64-bit processor</div>
@@ -89,7 +87,6 @@
                     <span>data-${data_version}.windows-amd64.zip</span>
                 </div>
             </a>
-            <!--
             <a class="download downloadBox" href="/dl/data-${data_version}.darwin-arm64.zip">
                 <div class="platform">Apple macOS (ARM64)</div>
                 <div class="reqs">macOS 11 or later, Apple 64-bit processor</div>
@@ -98,7 +95,6 @@
                     <span>data-${data_version}.darwin-arm64.zip</span>
                 </div>
             </a>
-            -->
             <a class="download downloadBox" href="/dl/data-${data_version}.darwin-amd64.zip">
                 <div class="platform">Apple macOS (x86-64)</div>
                 <div class="reqs">macOS 10.13 or later, Intel 64-bit processor</div>
@@ -119,7 +115,6 @@
                     <span>other-${data_version}.windows-amd64.zip</span>
                 </div>
             </a>
-            <!--
             <a class="download downloadBox" href="/dl/other-${data_version}.darwin-arm64.zip">
                 <div class="platform">Apple macOS (ARM64)</div>
                 <div class="reqs">macOS 11 or later, Apple 64-bit processor</div>
@@ -128,7 +123,6 @@
                     <span>other-${data_version}.darwin-arm64.zip</span>
                 </div>
             </a>
-            -->
             <a class="download downloadBox" href="/dl/other-${data_version}.darwin-amd64.zip">
                 <div class="platform">Apple macOS (x86-64)</div>
                 <div class="reqs">macOS 10.13 or later, Intel 64-bit processor</div>

@@ -7,10 +7,10 @@ p0=`pwd`
 # 获取脚本所在路径, 防止后续操作在非项目路径
 p1=$(cd $(dirname $0);pwd)
 
-platform=("windows" "mac")
-OS=("windows" "darwin")
-arch=("amd64" "amd64")
-ext=(".exe" "")
+platform=("windows" "mac" "mac")
+OS=("windows" "darwin" "darwin")
+arch=("amd64" "amd64" "arm64")
+ext=(".exe" "" "")
 
 echo 打包数据工具...
 repo="gitee.com/quant1x/data"

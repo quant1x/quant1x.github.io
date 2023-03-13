@@ -47,7 +47,7 @@ if [ -d ${type} ]; then
     do
       rm -f bin/*
       echo "正在编译${platform[$i]}的${arch[$i]}的其它应用..."
-      apps=("zxg" "tick")
+      apps=("zxg" "tick" "snapshot")
       for app in ${apps[@]}
       do
         echo "正在编译${platform[$i]}的${arch[$i]}应用...$app..."
@@ -68,7 +68,7 @@ type="quant"
 if [ -d ${type} ]; then
   rm -rf ${type}
 fi
-quantVersion="1.0.0"
+quantVersion="0.0.1"
 git clone --depth 1 https://${repo}.git ${type}
 if [ -d ${type} ]; then
   cd ${type}

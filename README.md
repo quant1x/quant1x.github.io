@@ -21,7 +21,13 @@
  zxg -path ~/workspace/data/tdx
 ```
 ## 3. *nix 定时任务设定
+${INSTALL_PATH} 表示安装路径
+
 ```shell
-*/2 9-15 * * 1-5 XXXXX/stock-realtime-csv
-30 17 * * 1-5 XXXXX/stock-update-csv
+*/1 9-15 * * 1-5 ${INSTALL_PATH}/realtime
+* 9-15 * * 1-5 ${INSTALL_PATH}/snapshot
+*/2 9-15 * * 1-5 ${INSTALL_PATH}/tick --today=true
+30 16 * * 1-5 ${INSTALL_PATH}/kline
+15 9,23 * * 1-5 ${INSTALL_PATH}/f10
+30 9-23 * * 1-5 ${INSTALL_PATH}/xdxr
 ```

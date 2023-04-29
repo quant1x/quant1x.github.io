@@ -12,6 +12,9 @@ OS=("windows" "darwin" "darwin")
 arch=("amd64" "amd64" "arm64")
 ext=(".exe" "" "")
 
+echo 清理旧版本...
+rm -rf ./dl/*
+
 echo 打包数据工具...
 repo="gitee.com/quant1x/data"
 type="data"
@@ -62,7 +65,7 @@ if [ -d ${type} ]; then
   rm -rf ./${type}
 fi
 
-echo 打包策略工具...
+echo '打包策略工具(quant)...'
 repo="gitee.com/mymmsc/quant"
 type="quant"
 if [ -d ${type} ]; then
@@ -96,7 +99,43 @@ if [ -d ${type} ]; then
   cd ..
   rm -rf ./${type}
 fi
-sed "s/\${quant_version}/${quantVersion}/g" index.tpl| sed "s/\${data_version}/${dataVersion}/g" > index.html
+
+echo '打包策略工具(t89k)...'
+repo="gitee.com/quant1x/t89k"
+type="t89k"
+if [ -d ${type} ]; then
+  rm -rf ${type}
+fi
+t89kVersion="0.0.1"
+git clone --depth 1 https://${repo}.git ${type}
+if [ -d ${type} ]; then
+  cd ${type}
+  mkdir bin
+  version=$(git describe --tags `git rev-list --tags --max-count=1`)
+  version=${version:1}
+  t89kVersion=${version}
+  echo "${type} version=${version}"
+  for (( i = 0 ; i < ${#platform[@]} ; i++ ))
+  do
+    rm -f bin/*
+    echo "正在编译${platform[$i]}的${arch[$i]}应用..."
+    meths=("strategy")
+    apps=("t89k")
+    for (( j = 0 ; j < ${#meths[@]} ; j++ ))
+    do
+      echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}..."
+      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-X 'main.MinVersion=${t89kVersion}'" -o bin/${apps[$j]}${ext[$i]} ${repo}/${meths[$j]}
+      echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}...OK"
+    done
+    echo "正在编译${platform[$i]}的${arch[$i]}应用...OK"
+    zip ../dl/${type}-$version.${OS[$i]}-${arch[$i]}.zip bin/*
+    rm bin/*
+  done
+  cd ..
+  rm -rf ./${type}
+fi
+
+sed "s/\${quant_version}/${quantVersion}/g" index.tpl | sed "s/\${data_version}/${dataVersion}/g" | sed "s/\${t89k_version}/${t89kVersion}/g" > index.html
 git add .
 git commit -m "更新版本 ${quantVersion}"
 version=$(git describe --tags `git rev-list --tags --max-count=1`)

@@ -34,7 +34,7 @@ if [ -d ${type} ]; then
   do
     rm -f bin/*
     echo "正在编译${platform[$i]}的${arch[$i]}应用..."
-    apps=("kline" "snapshot" "tick" "f10")
+    apps=("kline" "snapshot" "tick")
     for app in ${apps[@]}
     do
       echo "正在编译${platform[$i]}的${arch[$i]}应用...$app..."

@@ -131,7 +131,7 @@
                 </div>
             </a>
         </div>
-
+<!--
         <h2 id="other">Quant1X-data other tools downloads</h2>
         <div class="downloadWrapper">
             <a class="download downloadBox" href="/dl/other-${data_version}.windows-amd64.zip">
@@ -159,6 +159,7 @@
                 </div>
             </a>
         </div>
+        -->
         <div style="clear: both;"></div>
     </article>
 </main>

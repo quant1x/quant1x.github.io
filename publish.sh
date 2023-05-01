@@ -34,8 +34,7 @@ if [ -d ${type} ]; then
   do
     rm -f bin/*
     echo "正在编译${platform[$i]}的${arch[$i]}应用..."
-    #apps=("kline" "realtime" "zxg" "xdxr" "tick")
-    apps=("kline" "realtime" "xdxr")
+    apps=("kline" "snapshot" "tick" "f10")
     for app in ${apps[@]}
     do
       echo "正在编译${platform[$i]}的${arch[$i]}应用...$app..."
@@ -46,21 +45,6 @@ if [ -d ${type} ]; then
     zip ../dl/${type}-$version.${OS[$i]}-${arch[$i]}.zip bin/*
     rm bin/*
   done
-  for (( i = 0 ; i < ${#platform[@]} ; i++ ))
-    do
-      rm -f bin/*
-      echo "正在编译${platform[$i]}的${arch[$i]}的其它应用..."
-      apps=("f10" "tick" "snapshot")
-      for app in ${apps[@]}
-      do
-        echo "正在编译${platform[$i]}的${arch[$i]}应用...$app..."
-        env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-X 'main.MinVersion=${dataVersion}'" -o bin/${app}${ext[$i]} gitee.com/quant1x/data/update/${app}
-        echo "正在编译${platform[$i]}的${arch[$i]}应用...$app...OK"
-      done
-      echo "正在编译${platform[$i]}的${arch[$i]}应用...OK"
-      zip ../dl/other-$version.${OS[$i]}-${arch[$i]}.zip bin/*
-      rm bin/*
-    done
   cd ..
   rm -rf ./${type}
 fi

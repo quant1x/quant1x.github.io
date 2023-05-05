@@ -50,7 +50,7 @@
 <main class="SiteContent SiteContent--default">
 
     <article class="Downloads Article">
-        <h2 id="t89k">Quant1X Short-Term Strategy downloads</h2>
+        <h2 id="t89k">Quant1X 短线策略 (测试) </h2>
         <div class="downloadWrapper">
             <a class="download downloadBox" href="/dl/t89k-${t89k_version}.windows-amd64.zip">
                 <div class="platform">Microsoft Windows</div>
@@ -77,7 +77,7 @@
                 </div>
             </a>
         </div>
-        <h2 id="quant">Quant1X-quant tools downloads</h2>
+        <h2 id="quant">Quant1X 多模型策略</h2>
         <div class="downloadWrapper">
             <a class="download downloadBox" href="/dl/quant-${quant_version}.windows-amd64.zip">
                 <div class="platform">Microsoft Windows</div>
@@ -104,7 +104,7 @@
                 </div>
             </a>
         </div>
-        <h2 id="data">Quant1X-data tools downloads</h2>
+        <h2 id="data">Quant1X 本地数据工具</h2>
         <div class="downloadWrapper">
             <a class="download downloadBox" href="/dl/data-${data_version}.windows-amd64.zip">
                 <div class="platform">Microsoft Windows</div>

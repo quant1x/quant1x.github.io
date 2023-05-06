@@ -104,7 +104,7 @@ if [ -d ${type} ]; then
   do
     rm -f bin/*
     echo "正在编译${platform[$i]}的${arch[$i]}应用..."
-    meths=("strategy")
+    meths=("")
     apps=("t89k")
     for (( j = 0 ; j < ${#meths[@]} ; j++ ))
     do

@@ -51,7 +51,7 @@ if [ -d ${type} ]; then
 fi
 
 echo '打包策略工具(quant)...'
-repo="gitee.com/mymmsc/quant"
+repo="gitee.com/quant1x/quant"
 type="quant"
 if [ -d ${type} ]; then
   rm -rf ${type}
@@ -69,12 +69,12 @@ if [ -d ${type} ]; then
   do
     rm -f bin/*
     echo "正在编译${platform[$i]}的${arch[$i]}应用..."
-    meths=("strategy")
+    meths=("")
     apps=("quant")
     for (( j = 0 ; j < ${#meths[@]} ; j++ ))
     do
       echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}..."
-      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${quantVersion}'" -o bin/${apps[$j]}${ext[$i]} github.com/quant1x/quant/${meths[$j]}
+      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${quantVersion}'" -o bin/${apps[$j]}${ext[$i]} gitee.com/quant1x/quant/${meths[$j]}
       echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}...OK"
     done
     echo "正在编译${platform[$i]}的${arch[$i]}应用...OK"

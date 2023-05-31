@@ -139,7 +139,7 @@ if [ "$version" == "$quantVersion" ]; then
   git push origin :v${quantVersion}
   echo "版本相同, 先删除远程tag...OK"
 fi
-git push --tags
+git push --tags --force
 cd $p0
 
 

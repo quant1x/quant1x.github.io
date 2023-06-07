@@ -77,7 +77,7 @@
                 </div>
             </a>
         </div>
-        <h2 id="quant">Quant1X 多模型策略</h2>
+        <h2 id="quant">Quant1X Zero-Sum</h2>
         <div class="downloadWrapper">
             <a class="download downloadBox" href="/dl/quant-${quant_version}.windows-amd64.zip">
                 <div class="platform">Microsoft Windows</div>

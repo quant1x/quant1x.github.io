@@ -50,8 +50,8 @@ if [ -d ${type} ]; then
   rm -rf ./${type}
 fi
 
-echo '打包策略工具(quant)...'
-repo="gitee.com/quant1x/quant"
+echo '打包策略工具(Zero-Sum Game)...'
+repo="gitee.com/quant1x/zero-sum"
 type="quant"
 if [ -d ${type} ]; then
   rm -rf ${type}
@@ -70,7 +70,7 @@ if [ -d ${type} ]; then
     rm -f bin/*
     echo "正在编译${platform[$i]}的${arch[$i]}应用..."
     meths=("")
-    apps=("quant")
+    apps=("zero-sum")
     for (( j = 0 ; j < ${#meths[@]} ; j++ ))
     do
       echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}..."

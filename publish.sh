@@ -132,7 +132,7 @@ if [ "$version" == "quantVersion" ]; then
   git tag --delete v${quantVersion}
   echo "版本相同, 先删除tag...OK"
 fi
-git tag -a v${quantVersion} -m "Release version ${quantVersion}"
+git tag -a v${quantVersion} -m "Release version ${quantVersion}" --force
 git push
 if [ "$version" == "quantVersion" ]; then
   echo "版本相同, 先删除远程tag"

@@ -50,7 +50,7 @@
 <main class="SiteContent SiteContent--default">
 
     <article class="Downloads Article">
-        <h2 id="quant">Quant1X 短线策略 (测试)，构建时间: ${build_time} </h2>
+        <h2 id="quant">Quant1X 综合策略工具，构建时间: ${build_time} </h2>
         <div class="downloadWrapper">
             <a class="download downloadBox" href="/dl/quant-${quant_version}.windows-amd64.zip">
                 <div class="platform">Microsoft Windows</div>

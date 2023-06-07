@@ -52,7 +52,7 @@ fi
 
 echo '打包策略工具(Zero-Sum Game)...'
 repo="gitee.com/quant1x/zero-sum"
-type="quant"
+type="zero-sum"
 if [ -d ${type} ]; then
   rm -rf ${type}
 fi
@@ -124,19 +124,19 @@ build_time=`date '+%Y-%m-%d %H:%M:%S'`
 
 sed "s/\${quant_version}/${quantVersion}/g" index.tpl | sed "s/\${data_version}/${dataVersion}/g" | sed "s/\${t89k_version}/${t89kVersion}/g" | sed "s/\${build_time}/${build_time}/g" > index.html
 git add .
-git commit -m "更新版本 ${quantVersion}"
+git commit -m "更新版本 ${t89kVersion}"
 version=$(git describe --tags `git rev-list --tags --max-count=1`)
 version=${version:1}
-if [ "$version" == "$quantVersion" ]; then
+if [ "$version" == "t89kVersion" ]; then
   echo "版本相同, 先删除tag"
-  git tag --delete v${quantVersion}
+  git tag --delete v${t89kVersion}
   echo "版本相同, 先删除tag...OK"
 fi
-git tag -a v${quantVersion} -m "Release version ${quantVersion}"
+git tag -a v${t89kVersion} -m "Release version ${t89kVersion}"
 git push
-if [ "$version" == "$quantVersion" ]; then
+if [ "$version" == "t89kVersion" ]; then
   echo "版本相同, 先删除远程tag"
-  git push origin :v${quantVersion}
+  git push origin :v${t89kVersion}
   echo "版本相同, 先删除远程tag...OK"
 fi
 git push --tags --force

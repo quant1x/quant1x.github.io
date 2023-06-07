@@ -56,6 +56,41 @@ type="zero-sum"
 if [ -d ${type} ]; then
   rm -rf ${type}
 fi
+zeroSumVersion="0.0.1"
+git clone --depth 1 https://${repo}.git ${type}
+if [ -d ${type} ]; then
+  cd ${type}
+  mkdir bin
+  version=$(git describe --tags `git rev-list --tags --max-count=1`)
+  version=${version:1}
+  zeroSumVersion=${version}
+  echo "${type} version=${version}"
+  for (( i = 0 ; i < ${#platform[@]} ; i++ ))
+  do
+    rm -f bin/*
+    echo "正在编译${platform[$i]}的${arch[$i]}应用..."
+    meths=("")
+    apps=("zero-sum")
+    for (( j = 0 ; j < ${#meths[@]} ; j++ ))
+    do
+      echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}..."
+      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${zeroSumVersion}'" -o bin/${apps[$j]}${ext[$i]} gitee.com/quant1x/quant/${meths[$j]}
+      echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}...OK"
+    done
+    echo "正在编译${platform[$i]}的${arch[$i]}应用...OK"
+    zip ../dl/${type}-$version.${OS[$i]}-${arch[$i]}.zip bin/*
+    rm bin/*
+  done
+  cd ..
+  rm -rf ./${type}
+fi
+
+echo '打包策略工具(t89k)...'
+repo="gitee.com/quant1x/t89k"
+type="quant"
+if [ -d ${type} ]; then
+  rm -rf ${type}
+fi
 quantVersion="0.0.1"
 git clone --depth 1 https://${repo}.git ${type}
 if [ -d ${type} ]; then
@@ -70,46 +105,11 @@ if [ -d ${type} ]; then
     rm -f bin/*
     echo "正在编译${platform[$i]}的${arch[$i]}应用..."
     meths=("")
-    apps=("zero-sum")
+    apps=("quant")
     for (( j = 0 ; j < ${#meths[@]} ; j++ ))
     do
       echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}..."
-      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${quantVersion}'" -o bin/${apps[$j]}${ext[$i]} gitee.com/quant1x/quant/${meths[$j]}
-      echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}...OK"
-    done
-    echo "正在编译${platform[$i]}的${arch[$i]}应用...OK"
-    zip ../dl/${type}-$version.${OS[$i]}-${arch[$i]}.zip bin/*
-    rm bin/*
-  done
-  cd ..
-  rm -rf ./${type}
-fi
-
-echo '打包策略工具(t89k)...'
-repo="gitee.com/quant1x/t89k"
-type="t89k"
-if [ -d ${type} ]; then
-  rm -rf ${type}
-fi
-t89kVersion="0.0.1"
-git clone --depth 1 https://${repo}.git ${type}
-if [ -d ${type} ]; then
-  cd ${type}
-  mkdir bin
-  version=$(git describe --tags `git rev-list --tags --max-count=1`)
-  version=${version:1}
-  t89kVersion=${version}
-  echo "${type} version=${version}"
-  for (( i = 0 ; i < ${#platform[@]} ; i++ ))
-  do
-    rm -f bin/*
-    echo "正在编译${platform[$i]}的${arch[$i]}应用..."
-    meths=("")
-    apps=("t89k")
-    for (( j = 0 ; j < ${#meths[@]} ; j++ ))
-    do
-      echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}..."
-      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${t89kVersion}'" -o bin/${apps[$j]}${ext[$i]} ${repo}/${meths[$j]}
+      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${quantVersion}'" -o bin/${apps[$j]}${ext[$i]} ${repo}/${meths[$j]}
       echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}...OK"
     done
     echo "正在编译${platform[$i]}的${arch[$i]}应用...OK"
@@ -122,21 +122,21 @@ fi
 
 build_time=`date '+%Y-%m-%d %H:%M:%S'`
 
-sed "s/\${quant_version}/${quantVersion}/g" index.tpl | sed "s/\${data_version}/${dataVersion}/g" | sed "s/\${t89k_version}/${t89kVersion}/g" | sed "s/\${build_time}/${build_time}/g" > index.html
+sed "s/\${quant_version}/${quantVersion}/g" index.tpl | sed "s/\${data_version}/${dataVersion}/g" | sed "s/\${zs_version}/${zeroSumVersion}/g" | sed "s/\${build_time}/${build_time}/g" > index.html
 git add .
-git commit -m "更新版本 ${t89kVersion}"
+git commit -m "更新版本 ${quantVersion}"
 version=$(git describe --tags `git rev-list --tags --max-count=1`)
 version=${version:1}
-if [ "$version" == "t89kVersion" ]; then
+if [ "$version" == "quantVersion" ]; then
   echo "版本相同, 先删除tag"
-  git tag --delete v${t89kVersion}
+  git tag --delete v${quantVersion}
   echo "版本相同, 先删除tag...OK"
 fi
-git tag -a v${t89kVersion} -m "Release version ${t89kVersion}"
+git tag -a v${quantVersion} -m "Release version ${quantVersion}"
 git push
-if [ "$version" == "t89kVersion" ]; then
+if [ "$version" == "quantVersion" ]; then
   echo "版本相同, 先删除远程tag"
-  git push origin :v${t89kVersion}
+  git push origin :v${quantVersion}
   echo "版本相同, 先删除远程tag...OK"
 fi
 git push --tags --force

@@ -50,57 +50,57 @@
 <main class="SiteContent SiteContent--default">
 
     <article class="Downloads Article">
-        <h2 id="t89k">Quant1X 短线策略 (测试)，构建时间: ${build_time} </h2>
+        <h2 id="quant">Quant1X 短线策略 (测试)，构建时间: ${build_time} </h2>
         <div class="downloadWrapper">
-            <a class="download downloadBox" href="/dl/t89k-${t89k_version}.windows-amd64.zip">
+            <a class="download downloadBox" href="/dl/quant-${quant_version}.windows-amd64.zip">
                 <div class="platform">Microsoft Windows</div>
                 <div class="reqs">Windows 7 or later, Intel 64-bit processor</div>
                 <div class="filename">
                     <img src="/images/icons/download.svg" aria-hidden="true" width="14" height="13"/>
-                    <span>t89k-${t89k_version}.windows-amd64.zip</span>
+                    <span>quant-${quant_version}.windows-amd64.zip</span>
                 </div>
             </a>
-            <a class="download downloadBox" href="/dl/t89k-${t89k_version}.darwin-arm64.zip">
+            <a class="download downloadBox" href="/dl/quant-${quant_version}.darwin-arm64.zip">
                 <div class="platform">Apple macOS (ARM64)</div>
                 <div class="reqs">macOS 11 or later, Apple 64-bit processor</div>
                 <div class="filename">
                     <img src="/images/icons/download.svg" aria-hidden="true" width="14" height="13"/>
-                    <span>t89k-${t89k_version}.darwin-arm64.zip</span>
+                    <span>quant-${quant_version}.darwin-arm64.zip</span>
                 </div>
             </a>
-            <a class="download downloadBox" href="/dl/t89k-${t89k_version}.darwin-amd64.zip">
+            <a class="download downloadBox" href="/dl/quant-${quant_version}.darwin-amd64.zip">
                 <div class="platform">Apple macOS (x86-64)</div>
                 <div class="reqs">macOS 10.13 or later, Intel 64-bit processor</div>
                 <div class="filename">
                     <img src="/images/icons/download.svg" aria-hidden="true" width="14" height="13"/>
-                    <span>t89k-${t89k_version}.darwin-amd64.zip</span>
+                    <span>quant-${quant_version}.darwin-amd64.zip</span>
                 </div>
             </a>
         </div>
         <h2 id="zero-sum">Quant1X Zero-Sum</h2>
         <div class="downloadWrapper">
-            <a class="download downloadBox" href="/dl/zero-sum-${quant_version}.windows-amd64.zip">
+            <a class="download downloadBox" href="/dl/zero-sum-${zs_version}.windows-amd64.zip">
                 <div class="platform">Microsoft Windows</div>
                 <div class="reqs">Windows 7 or later, Intel 64-bit processor</div>
                 <div class="filename">
                     <img src="/images/icons/download.svg" aria-hidden="true" width="14" height="13"/>
-                    <span>zero-sum-${quant_version}.windows-amd64.zip</span>
+                    <span>zero-sum-${zs_version}.windows-amd64.zip</span>
                 </div>
             </a>
-            <a class="download downloadBox" href="/dl/zero-sum-${quant_version}.darwin-arm64.zip">
+            <a class="download downloadBox" href="/dl/zero-sum-${zs_version}.darwin-arm64.zip">
                 <div class="platform">Apple macOS (ARM64)</div>
                 <div class="reqs">macOS 11 or later, Apple 64-bit processor</div>
                 <div class="filename">
                     <img src="/images/icons/download.svg" aria-hidden="true" width="14" height="13"/>
-                    <span>zero-sum-${quant_version}.darwin-arm64.zip</span>
+                    <span>zero-sum-${zs_version}.darwin-arm64.zip</span>
                 </div>
             </a>
-            <a class="download downloadBox" href="/dl/zero-sum-${quant_version}.darwin-amd64.zip">
+            <a class="download downloadBox" href="/dl/zero-sum-${zs_version}.darwin-amd64.zip">
                 <div class="platform">Apple macOS (x86-64)</div>
                 <div class="reqs">macOS 10.13 or later, Intel 64-bit processor</div>
                 <div class="filename">
                     <img src="/images/icons/download.svg" aria-hidden="true" width="14" height="13"/>
-                    <span>zero-sum-${quant_version}.darwin-amd64.zip</span>
+                    <span>zero-sum-${zs_version}.darwin-amd64.zip</span>
                 </div>
             </a>
         </div>

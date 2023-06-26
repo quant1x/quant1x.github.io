@@ -77,7 +77,7 @@
                 </div>
             </a>
         </div>
-        <h2 id="zero-sum">Quant1X Zero-Sum</h2>
+        <h2 id="zero-sum">Quant1X Zero-Sum(含数据工具)</h2>
         <div class="downloadWrapper">
             <a class="download downloadBox" href="/dl/zero-sum-${zs_version}.windows-amd64.zip">
                 <div class="platform">Microsoft Windows</div>

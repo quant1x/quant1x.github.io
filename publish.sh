@@ -66,13 +66,15 @@ if [ -d ${type} ]; then
   version=${version:1}
   zeroSumVersion=${version}
   echo "${type} version=${version}"
-  text=$(go list -m gitee.com/quant1x/data)
+
+  text=$(go list -m gitee.com/quant1x/gotdx)
+  array=($text)
+  tdxVersion=${array[1]:1}
+
+  text=$(go list -m gitee.com/quant1x/stock)
   array=($text)
   exDataVersion=${array[1]:1}
 
-  text=$(go list -m gitee.com/quant1x/quant)
-  array=($text)
-  exquantVersion=${array[1]:1}
   for (( i = 0 ; i < ${#platform[@]} ; i++ ))
   do
     rm -f bin/*
@@ -82,7 +84,7 @@ if [ -d ${type} ]; then
     for (( j = 0 ; j < ${#meths[@]} ; j++ ))
     do
       echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}..."
-      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${zeroSumVersion}' -X 'main.dataVersion=${exDataVersion}' -X 'main.quantVersion=${exquantVersion}'" -o bin/${apps[$j]}${ext[$i]} gitee.com/quant1x/quant/${meths[$j]}
+      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${zeroSumVersion}' -X 'main.tdxVersion=${tdxVersion}' -X 'main.dataVersion=${exDataVersion}'" -o bin/${apps[$j]}${ext[$i]} ${repo}/${meths[$j]}/${meths[$j]}
       echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}...OK"
     done
     echo "正在编译${platform[$i]}的${arch[$i]}应用...OK"
@@ -108,13 +110,14 @@ if [ -d ${type} ]; then
   version=${version:1}
   quantVersion=${version}
   echo "${type} version=${version}"
+
+  text=$(go list -m gitee.com/quant1x/gotdx)
+  array=($text)
+  tdxVersion=${array[1]:1}
   text=$(go list -m gitee.com/quant1x/data)
   array=($text)
   exDataVersion=${array[1]:1}
 
-  text=$(go list -m gitee.com/quant1x/quant)
-  array=($text)
-  exquantVersion=${array[1]:1}
   for (( i = 0 ; i < ${#platform[@]} ; i++ ))
   do
     rm -f bin/*
@@ -124,7 +127,7 @@ if [ -d ${type} ]; then
     for (( j = 0 ; j < ${#meths[@]} ; j++ ))
     do
       echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}..."
-      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${quantVersion}' -X 'main.dataVersion=${exDataVersion}' -X 'main.quantVersion=${exquantVersion}'" -o bin/${apps[$j]}${ext[$i]} ${repo}/${meths[$j]}
+      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${quantVersion}' -X 'main.dataVersion=${exDataVersion}' -X 'main.tdxVersion=${tdxVersion}'" -o bin/${apps[$j]}${ext[$i]} ${repo}/${meths[$j]}
       echo "正在编译${platform[$i]}的${arch[$i]}应用...${meths[$j]}...OK"
     done
     echo "正在编译${platform[$i]}的${arch[$i]}应用...OK"

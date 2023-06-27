@@ -22,9 +22,11 @@ if [ -d ${type} ]; then
   rm -rf ${type}
 fi
 dataVersion="0.0.1"
-git clone --depth 1 https://gitee.com/quant1x/data.git
+git clone https://gitee.com/quant1x/data.git
 if [ -d ${type} ]; then
   cd ${type}
+  git checkout 1.10.x
+  git pull
   version=$(git describe --tags `git rev-list --tags --max-count=1`)
   version=${version:1}
   dataVersion=${version}
@@ -102,10 +104,12 @@ if [ -d ${type} ]; then
   rm -rf ${type}
 fi
 quantVersion="0.0.1"
-git clone --depth 1 https://${repo}.git ${type}
+git clone https://${repo}.git ${type}
 if [ -d ${type} ]; then
   cd ${type}
   mkdir bin
+  git checkout 1.9.x
+  git pull
   version=$(git describe --tags `git rev-list --tags --max-count=1`)
   version=${version:1}
   quantVersion=${version}

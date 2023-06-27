@@ -26,7 +26,8 @@ dataBranch="1.10.x"
 git clone -b ${dataBranch} --depth 1 https://gitee.com/quant1x/data.git
 if [ -d ${type} ]; then
   cd ${type}
-  version=$(git describe --tags)
+  version=$(git describe --tag)
+  version=${version%%-*}
   version=${version:1}
   dataVersion=${version}
   echo "${type} version=${version}"
@@ -108,7 +109,8 @@ git clone -b ${quantBranch}  https://${repo}.git ${type}
 if [ -d ${type} ]; then
   cd ${type}
   mkdir bin
-  version=$(git describe --tags)
+  version=$(git describe --tag)
+  version=${version%%-*}
   version=${version:1}
   quantVersion=${version}
   echo "${type} version=${version}"

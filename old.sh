@@ -105,7 +105,7 @@ if [ -d ${type} ]; then
 fi
 quantVersion="0.0.1"
 quantBranch="1.9.x"
-git clone -b ${quantBranch}  https://${repo}.git
+git clone -b ${quantBranch} --depth 1 https://${repo}.git ${type}
 if [ -d ${type} ]; then
   cd ${type}
   mkdir bin

@@ -13,7 +13,9 @@ arch=("amd64" "amd64" "arm64")
 ext=(".exe" "" "")
 
 echo 清理旧版本...
-mkdir ./dl
+if [ ! -d ./dl ]; then
+  mkdir ./dl
+fi
 rm -rf ./dl/*
 
 echo 打包数据工具...

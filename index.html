@@ -132,6 +132,7 @@
             </a>
         </div>
         <h5 id="v19x"><a href="v1.9.html">Quant1X 1.9.x版本</a></h5>
+        <h5 id="readme"><a href="README.md">Quant1X使用说明</a></h5>
         <div style="clear: both;"></div>
     </article>
 </main>

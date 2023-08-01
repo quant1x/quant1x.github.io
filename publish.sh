@@ -43,7 +43,7 @@ if [ -d ${type} ]; then
     do
       echo "正在编译${platform[$i]}的${arch[$i]}应用...$app..."
       #env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${dataVersion}'" -o bin/${app}${ext[$i]} gitee.com/quant1x/data/update/${app}
-      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${dataVersion}'" -o bin/${app}${ext[$i]} gitee.com/quant1x/data
+      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${dataVersion}'" -o bin/${app}${ext[$i]} gitee.com/quant1x/data/v2
       echo "正在编译${platform[$i]}的${arch[$i]}应用...$app...OK"
     done
     echo "正在编译${platform[$i]}的${arch[$i]}应用...OK"
@@ -117,7 +117,7 @@ if [ -d ${type} ]; then
   text=$(go list -m gitee.com/quant1x/gotdx)
   array=($text)
   tdxVersion=${array[1]:1}
-  text=$(go list -m gitee.com/quant1x/data)
+  text=$(go list -m gitee.com/quant1x/data/v2)
   array=($text)
   exDataVersion=${array[1]:1}
 
@@ -125,7 +125,7 @@ if [ -d ${type} ]; then
   do
     rm -f bin/*
     echo "正在编译${platform[$i]}的${arch[$i]}应用..."
-    meths=("")
+    meths=("v2")
     apps=("quant")
     for (( j = 0 ; j < ${#meths[@]} ; j++ ))
     do

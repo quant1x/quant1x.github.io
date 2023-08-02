@@ -1,3 +1,5 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 Quant1X量化交易系统使用说明
 ===
 

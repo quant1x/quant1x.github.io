@@ -37,13 +37,12 @@ if [ -d ${type} ]; then
   do
     rm -f bin/*
     echo "正在编译${platform[$i]}的${arch[$i]}应用..."
-    #apps=("stock" "snapshot")
+    meths=("v2")
     apps=("stock")
     for app in ${apps[@]}
     do
       echo "正在编译${platform[$i]}的${arch[$i]}应用...$app..."
-      #env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${dataVersion}'" -o bin/${app}${ext[$i]} gitee.com/quant1x/data/update/${app}
-      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${dataVersion}'" -o bin/${app}${ext[$i]} gitee.com/quant1x/data/v2
+      env GOOS=${OS[$i]} GOARCH=${arch[$i]} go build -ldflags "-s -w -X 'main.MinVersion=${dataVersion}'" -o bin/${app}${ext[$i]} gitee.com/quant1x/data/${meths[$j]}
       echo "正在编译${platform[$i]}的${arch[$i]}应用...$app...OK"
     done
     echo "正在编译${platform[$i]}的${arch[$i]}应用...OK"

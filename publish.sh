@@ -143,7 +143,7 @@ fi
 
 build_time=`date '+%Y-%m-%d %H:%M:%S'`
 
-sed "s/\${quant_version}/${quantVersion}/g" index.tpl | sed "s/\${data_version}/${dataVersion}/g" | sed "s/\${zs_version}/${zeroSumVersion}/g" | sed "s/\${build_time}/${build_time}/g" > index.html
+sed "s/\${quant_version}/${quantVersion}/g" download.tpl | sed "s/\${data_version}/${dataVersion}/g" | sed "s/\${zs_version}/${zeroSumVersion}/g" | sed "s/\${build_time}/${build_time}/g" > download.html
 git add .
 git commit -m "更新版本 ${quantVersion}"
 version=$(git describe --tags `git rev-list --tags --max-count=1`)

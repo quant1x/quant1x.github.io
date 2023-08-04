@@ -7,7 +7,7 @@
 | 序号 | 工具名                | 功能      | 下载                     |
 |:---|:-------------------|:--------|:-----------------------|
 | 1  | stock          | 数据采集功能  | [stock](download.html) |
-| 2  | quant              | 策略主程序 | [stock](download.html) |
+| 2  | quant              | 策略主程序 | [quant](download.html)     |
 | 3  | 旧版本 | 1.9.x开放版本 | [1.9.x](v1.9.html)     |
 
 ## 2. 数据采集(stock)
